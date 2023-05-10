@@ -20,4 +20,14 @@ const userSchemaRes = userSchema.omit({ password: true });
 
 const usersSchema = z.array(userSchemaRes);
 
-export { userSchema, userSchemaReq, userSchemaRes, usersSchema };
+const userPartial = userSchemaRes.omit({ admin: true });
+const userSchemaPart = userPartial.partial();
+
+export {
+  userSchema,
+  userSchemaReq,
+  userSchemaRes,
+  usersSchema,
+  userPartial,
+  userSchemaPart,
+};

@@ -5,8 +5,8 @@ import { AppDataSource } from "../../data-source";
 import { AppError } from "../../error";
 import { usersSchema } from "../../schemas/users";
 
-const readAllService = async (locals: string): Promise<TUserSchemaRes[]> => {
-  if (locals === "false") {
+const readAllService = async (locals: boolean): Promise<TUserSchemaRes[]> => {
+  if (locals === false) {
     throw new AppError("Unauthorized request", 401);
   }
 
