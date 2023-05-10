@@ -21,7 +21,7 @@ const validateEmail = async (
     },
   });
 
-  if (user !== null) {
+  if (user) {
     throw new AppError("User already registered", 409);
   }
 
