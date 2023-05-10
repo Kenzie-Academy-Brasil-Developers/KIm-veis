@@ -18,4 +18,6 @@ const userSchemaReq = userSchema.omit({
 });
 const userSchemaRes = userSchema.omit({ password: true });
 
-export { userSchema, userSchemaReq, userSchemaRes };
+const usersSchema = z.array(userSchemaRes);
+
+export { userSchema, userSchemaReq, userSchemaRes, usersSchema };
