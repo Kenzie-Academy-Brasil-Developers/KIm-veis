@@ -2,7 +2,6 @@ import { z } from "zod";
 import {
   userPartial,
   userSchema,
-  userSchemaPart,
   userSchemaReq,
   userSchemaRes,
 } from "../schemas/users";
