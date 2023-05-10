@@ -4,6 +4,7 @@ import { userSchemaReq } from "../schemas/users";
 import createService from "../services/users/create";
 import readAllService from "../services/users/readAll";
 import updateService from "../services/users/update";
+import deleteService from "../services/users/delete";
 
 const createUser = async (req: Request, res: Response): Promise<Response> => {
   const data: TUserSchemaReq = userSchemaReq.parse(req.body);
@@ -31,4 +32,11 @@ const updateUser = async (req: Request, res: Response): Promise<Response> => {
   return res.status(201).json(returnData);
 };
 
-export { createUser, readAllUser, updateUser };
+const deleteUser = async (req: Request, res: Response): Promise<Response> => {
+  const id: number = parseInt(req.params.id);
+  await deleteService(id, res.locals.userAdmin);
+
+  return res.status(204).json();
+};
+
+export { createUser, readAllUser, updateUser, deleteUser };
