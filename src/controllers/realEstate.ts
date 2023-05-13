@@ -10,7 +10,6 @@ const createRealEstate = async (
   const data: TRealEstateSchemaReq = realEstateSchemaReq.parse(req.body);
 
   const returnData = await createService(data, res.locals.userAdmin);
-  console.log(returnData);
 
   return res.status(201).json(returnData);
 };
