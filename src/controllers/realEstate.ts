@@ -8,8 +8,9 @@ const createRealEstate = async (
   res: Response
 ): Promise<Response> => {
   const data: TRealEstateSchemaReq = realEstateSchemaReq.parse(req.body);
-  console.log(data);
+
   const returnData = await createService(data, res.locals.userAdmin);
+  console.log(returnData);
 
   return res.status(201).json(returnData);
 };

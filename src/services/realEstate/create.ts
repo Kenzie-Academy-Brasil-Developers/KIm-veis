@@ -21,6 +21,8 @@ const createService = async (
 
   const realEstate: RealEstate = realEstateRepository.create(data);
   await realEstateRepository.save(realEstate);
+
+  realEstate.value = Number(realEstate.value);
   const returnData: TRealEstateSchema = realEstateSchema.parse(realEstate);
 
   return returnData;
