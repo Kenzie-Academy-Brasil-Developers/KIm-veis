@@ -3,6 +3,7 @@ import { AppError } from "../error";
 import { Repository } from "typeorm";
 import Address from "../entities/addresses";
 import { AppDataSource } from "../data-source";
+import RealEstate from "../entities/realEstate";
 
 const validateAddress = async (
   req: Request,
@@ -15,6 +16,17 @@ const validateAddress = async (
 
   const addressRepository: Repository<Address> =
     AppDataSource.getRepository(Address);
+  const realEstateRepository: Repository<RealEstate> =
+    AppDataSource.getRepository(RealEstate);
+
+  const realEstate: RealEstate | null = await realEstateRepository.findOne({
+    where: {
+      address: req.body.address,
+    },
+  });
+  if (realEstate) {
+    throw new AppError("Real Estate alredy linked to an address", 400);
+  }
 
   let address: Address | null;
   if (req.body.address.number) {
