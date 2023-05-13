@@ -2,11 +2,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import Category from "./categories";
+import Address from "./addresses";
 
 @Entity("real_estate")
 class RealEstate {
@@ -30,6 +33,10 @@ class RealEstate {
 
   @ManyToOne(() => Category)
   category: Category;
+
+  @OneToOne(() => Address, (Address) => Address.real_estate)
+  @JoinColumn()
+  address: Address;
 }
 
 export default RealEstate;
