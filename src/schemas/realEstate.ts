@@ -18,4 +18,6 @@ const realEstateSchemaReq = realEstateSchema.omit({
   updatedAt: true,
 });
 
-export { realEstateSchema, realEstateSchemaReq };
+const realEstatesSchema = z.array(realEstateSchema);
+
+export { realEstateSchema, realEstateSchemaReq, realEstatesSchema };
