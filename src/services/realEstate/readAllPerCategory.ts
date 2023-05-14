@@ -1,8 +1,12 @@
 import { Repository } from "typeorm";
 import RealEstate from "../../entities/realEstate";
 import { AppDataSource } from "../../data-source";
+import { Category } from "../../entities";
+import { IRealEstatePerCategory } from "../../interfaces/realEstate";
 
-const readAllPerCategoryService = async (id: number): Promise<RealEstate[]> => {
+const readAllPerCategoryService = async (
+  id: number
+): Promise<IRealEstatePerCategory> => {
   const realEstateRepository: Repository<RealEstate> =
     AppDataSource.getRepository(RealEstate);
 
@@ -14,7 +18,22 @@ const readAllPerCategoryService = async (id: number): Promise<RealEstate[]> => {
     },
   });
 
-  return realEstate;
+  const categoryRepository: Repository<Category> =
+    AppDataSource.getRepository(Category);
+
+  const category: Category | null = await categoryRepository.findOne({
+    where: {
+      id: id,
+    },
+  });
+
+  const returnData = {
+    id: category?.id,
+    name: category!.name,
+    realEstate: realEstate,
+  };
+
+  return returnData;
 };
 
 export default readAllPerCategoryService;

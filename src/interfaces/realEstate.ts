@@ -1,7 +1,14 @@
 import { z } from "zod";
 import { realEstateSchema, realEstateSchemaReq } from "../schemas/realEstate";
+import { RealEstate } from "../entities";
 
 type TRealEstateSchema = z.infer<typeof realEstateSchema>;
 type TRealEstateSchemaReq = z.infer<typeof realEstateSchemaReq>;
 
-export { TRealEstateSchema, TRealEstateSchemaReq };
+interface IRealEstatePerCategory {
+  id: number | undefined;
+  name: string;
+  realEstate: RealEstate[];
+}
+
+export { TRealEstateSchema, TRealEstateSchemaReq, IRealEstatePerCategory };

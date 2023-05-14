@@ -3,4 +3,8 @@ import loginSchema from "../schemas/login";
 
 type TLoginSchema = z.infer<typeof loginSchema>;
 
-export default TLoginSchema;
+interface IToken {
+  token: string;
+}
+
+export { TLoginSchema, IToken };
