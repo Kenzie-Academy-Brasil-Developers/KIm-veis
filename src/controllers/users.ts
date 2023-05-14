@@ -7,8 +7,8 @@ import updateService from "../services/users/update";
 import deleteService from "../services/users/delete";
 
 const createUser = async (req: Request, res: Response): Promise<Response> => {
-  const data: TUserSchemaReq = userSchemaReq.parse(req.body);
-  const returnData = await createService(data);
+  // const data: TUserSchemaReq = userSchemaReq.parse(req.body);
+  const returnData = await createService(req.body);
 
   return res.status(201).json(returnData);
 };

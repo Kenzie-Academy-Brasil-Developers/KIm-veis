@@ -4,8 +4,8 @@ import loginSchema from "../schemas/login";
 import loginService from "../services/login";
 
 const loginUser = async (req: Request, res: Response): Promise<Response> => {
-  const data: TLoginSchema = loginSchema.parse(req.body);
-  const returnData = await loginService(data);
+  // const data: TLoginSchema = loginSchema.parse(req.body);
+  const returnData = await loginService(req.body);
 
   return res.json(returnData);
 };

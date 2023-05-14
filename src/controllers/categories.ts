@@ -8,8 +8,7 @@ const createCategory = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const data: TCategorySchemaReq = categorySchemaReq.parse(req.body);
-  const returnData = await CreateService(data, res.locals.userAdmin);
+  const returnData = await CreateService(req.body, res.locals.userAdmin);
 
   return res.status(201).json(returnData);
 };

@@ -8,10 +8,12 @@ import {
 import validateEmail from "../middlewares/validateEmail";
 import validateToken from "../middlewares/validateToken";
 import validateId from "../middlewares/validateId";
+import validateData from "../middlewares/validateData";
+import { userSchemaReq } from "../schemas/users";
 
 const userRoutes: Router = Router();
 
-userRoutes.post("", validateEmail, createUser);
+userRoutes.post("", validateEmail, validateData(userSchemaReq), createUser);
 userRoutes.get("", validateToken, readAllUser);
 userRoutes.patch("/:id", validateId, validateToken, updateUser);
 userRoutes.delete("/:id", validateId, validateToken, deleteUser);

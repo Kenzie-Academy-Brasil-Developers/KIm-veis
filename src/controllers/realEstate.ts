@@ -9,9 +9,7 @@ const createRealEstate = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const data: TRealEstateSchemaReq = realEstateSchemaReq.parse(req.body);
-
-  const returnData = await createService(data, res.locals.userAdmin);
+  const returnData = await createService(req.body, res.locals.userAdmin);
 
   return res.status(201).json(returnData);
 };
