@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import RealEstate from "./realEstate";
 
 @Entity("schedules")
 class Schedule {
@@ -10,6 +11,9 @@ class Schedule {
 
   @Column({ type: "time" })
   hour: Date | number;
+
+  @ManyToOne(() => RealEstate)
+  realEstate: RealEstate;
 }
 
 export default Schedule;
