@@ -1,4 +1,5 @@
 import {
+  BeforeInsert,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -8,6 +9,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import Schedule from "./schedules";
+import { hash } from "bcryptjs";
 
 @Entity("users")
 class User {
@@ -37,6 +39,11 @@ class User {
 
   @OneToMany(() => Schedule, (schedule) => schedule.user)
   schedules: Schedule[];
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await hash(this.password, 10);
+  }
 }
 
 export default User;

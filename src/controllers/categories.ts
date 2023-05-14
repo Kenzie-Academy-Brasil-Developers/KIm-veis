@@ -1,6 +1,4 @@
 import { Request, Response } from "express";
-import { TCategorySchemaReq } from "../interfaces/categories";
-import { categorySchemaReq } from "../schemas/categories";
 import CreateService from "../services/categories/create";
 import readAllService from "../services/categories/readAll";
 

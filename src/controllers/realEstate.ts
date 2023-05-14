@@ -1,6 +1,4 @@
 import { Request, Response } from "express";
-import { TRealEstateSchemaReq } from "../interfaces/realEstate";
-import { realEstateSchemaReq } from "../schemas/realEstate";
 import createService from "../services/realEstate/create";
 import readAllService from "../services/realEstate/readAll";
 import readAllPerCategoryService from "../services/realEstate/readAllPerCategory";

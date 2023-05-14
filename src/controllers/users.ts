@@ -1,13 +1,11 @@
 import { Request, Response } from "express";
-import { TUserSchemaPart, TUserSchemaReq } from "../interfaces/users";
-import { userSchemaReq } from "../schemas/users";
+import { TUserSchemaPart } from "../interfaces/users";
 import createService from "../services/users/create";
 import readAllService from "../services/users/readAll";
 import updateService from "../services/users/update";
 import deleteService from "../services/users/delete";
 
 const createUser = async (req: Request, res: Response): Promise<Response> => {
-  // const data: TUserSchemaReq = userSchemaReq.parse(req.body);
   const returnData = await createService(req.body);
 
   return res.status(201).json(returnData);
