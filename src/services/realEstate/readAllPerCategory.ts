@@ -3,6 +3,7 @@ import RealEstate from "../../entities/realEstate";
 import { AppDataSource } from "../../data-source";
 import { Category } from "../../entities";
 import { IRealEstatePerCategory } from "../../interfaces/realEstate";
+import { AppError } from "../../error";
 
 const readAllPerCategoryService = async (
   id: number
@@ -17,6 +18,10 @@ const readAllPerCategoryService = async (
       },
     },
   });
+
+  if (realEstate.length === 0) {
+    throw new AppError("Category not found", 404);
+  }
 
   const categoryRepository: Repository<Category> =
     AppDataSource.getRepository(Category);

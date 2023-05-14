@@ -57,7 +57,6 @@ const createService = async (
   newData.value = Number(newData.value);
 
   const returnData: TRealEstateSchema = realEstateSchema.parse(newData);
-  console.log(returnData);
 
   return returnData;
 };

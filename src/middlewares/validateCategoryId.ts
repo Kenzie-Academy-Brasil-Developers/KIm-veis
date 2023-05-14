@@ -9,10 +9,6 @@ const validateCategoryId = async (
   res: Response,
   next: NextFunction
 ) => {
-  if (!req.body.categoryId) {
-    throw new AppError("Category id is missing", 400);
-  }
-
   const categoryRepository: Repository<Category> =
     AppDataSource.getRepository(Category);
 

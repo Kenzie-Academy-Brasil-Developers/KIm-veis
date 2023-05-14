@@ -10,10 +10,6 @@ const validateAddress = async (
   res: Response,
   next: NextFunction
 ) => {
-  if (!req.body.address) {
-    throw new AppError("Address object is missing", 400);
-  }
-
   const addressRepository: Repository<Address> =
     AppDataSource.getRepository(Address);
   const realEstateRepository: Repository<RealEstate> =
@@ -25,7 +21,7 @@ const validateAddress = async (
     },
   });
   if (realEstate) {
-    throw new AppError("Real Estate alredy linked to an address", 400);
+    throw new AppError("Real Estate alredy linked to an address", 403);
   }
 
   let address: Address | null;
@@ -50,12 +46,7 @@ const validateAddress = async (
     });
   }
 
-  if (!address) {
-    throw new AppError("Insufficient permission", 400);
-  }
-
-  req.body.addressId = address.id;
-  delete req.body.address;
+  req.body.address = address!.id;
 
   next();
 };

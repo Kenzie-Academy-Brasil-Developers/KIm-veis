@@ -11,9 +11,9 @@ const realEstateRoutes: Router = Router();
 realEstateRoutes.post(
   "",
   validateToken,
+  validateData(realEstateSchemaReq),
   validateCategoryId,
   validateAddress,
-  validateData(realEstateSchemaReq),
   createRealEstate
 );
 realEstateRoutes.get("", readAllRealEstate);

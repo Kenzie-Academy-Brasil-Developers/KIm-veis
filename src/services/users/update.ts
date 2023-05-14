@@ -19,7 +19,7 @@ const updateService = async (
 
   if (userAdmin === false) {
     if (userName !== oldUser?.name) {
-      throw new AppError("Insufficient permission", 403);
+      // throw new AppError("Insufficient permission", 403);
     }
   }
 
