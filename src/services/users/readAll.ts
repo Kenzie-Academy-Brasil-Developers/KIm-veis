@@ -7,7 +7,7 @@ import { usersSchema } from "../../schemas/users";
 
 const readAllService = async (locals: boolean): Promise<TUserSchemaRes[]> => {
   if (locals === false) {
-    throw new AppError("Unauthorized request", 401);
+    throw new AppError("Insufficient permission", 403);
   }
 
   const userRepository: Repository<User> = AppDataSource.getRepository(User);

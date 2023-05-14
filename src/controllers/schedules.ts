@@ -17,9 +17,9 @@ const createSchedule = async (
   req.body.hour = date;
 
   const data: TScheduleSchemaReq = scheduleSchemaReq.parse(req.body);
-  const returnData = await createService(data);
+  await createService(data);
 
-  return res.status(201).json(returnData);
+  return res.status(201).json({ message: "Schedule created" });
 };
 
 const readAllPerRealEstateSchedule = async (
@@ -31,6 +31,10 @@ const readAllPerRealEstateSchedule = async (
     id,
     res.locals.userAdmin
   );
+
+  if (returnData.length === 0) {
+    return res.json({ message: "RealEstate not found" });
+  }
 
   return res.json(returnData);
 };

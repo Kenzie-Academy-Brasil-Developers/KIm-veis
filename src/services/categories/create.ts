@@ -13,7 +13,7 @@ const CreateService = async (
   locals: boolean
 ): Promise<TCategorySchema> => {
   if (locals === false) {
-    throw new AppError("Unauthorized request", 401);
+    throw new AppError("Insufficient permission", 403);
   }
 
   const categoryRepository: Repository<Category> =

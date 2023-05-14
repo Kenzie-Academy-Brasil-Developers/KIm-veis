@@ -17,13 +17,13 @@ const loginService = async (data: TLoginSchema): Promise<string> => {
   });
 
   if (!user) {
-    throw new AppError("Wrong email/password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const passwordMatch = await compare(data.password, user.password);
 
   if (!passwordMatch) {
-    throw new AppError("Wrong email/password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const token = jwt.sign(

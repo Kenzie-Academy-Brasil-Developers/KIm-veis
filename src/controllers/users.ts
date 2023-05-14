@@ -29,7 +29,7 @@ const updateUser = async (req: Request, res: Response): Promise<Response> => {
     data
   );
 
-  return res.status(201).json(returnData);
+  return res.status(200).json(returnData);
 };
 
 const deleteUser = async (req: Request, res: Response): Promise<Response> => {

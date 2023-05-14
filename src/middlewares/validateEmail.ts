@@ -22,7 +22,7 @@ const validateEmail = async (
   });
 
   if (user) {
-    throw new AppError("User already registered", 409);
+    throw new AppError("Email already exists", 409);
   }
 
   return next();

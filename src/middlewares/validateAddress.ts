@@ -51,7 +51,7 @@ const validateAddress = async (
   }
 
   if (!address) {
-    throw new AppError("Address not found", 404);
+    throw new AppError("Insufficient permission", 400);
   }
 
   req.body.addressId = address.id;

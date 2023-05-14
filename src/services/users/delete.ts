@@ -5,7 +5,7 @@ import { AppError } from "../../error";
 
 const deleteService = async (id: number, locals: boolean): Promise<void> => {
   if (locals === false) {
-    throw new AppError("Unauthorized request", 401);
+    throw new AppError("Insufficient permission", 403);
   }
 
   const userRepository: Repository<User> = AppDataSource.getRepository(User);

@@ -24,7 +24,7 @@ const createService = async (
   });
 
   if (!realEstate) {
-    throw new AppError("Real Estate not found", 404);
+    throw new AppError("RealEstate not found", 404);
   }
 
   const schedule: Schedule = scheduleRepository.create({

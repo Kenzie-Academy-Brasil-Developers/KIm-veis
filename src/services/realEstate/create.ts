@@ -38,7 +38,7 @@ const createService = async (
   });
 
   if (!address || !category) {
-    throw new AppError("Address or category not found", 404);
+    throw new AppError("Address or category not found", 403);
   }
 
   const realEstate: RealEstate = realEstateRepository.create({

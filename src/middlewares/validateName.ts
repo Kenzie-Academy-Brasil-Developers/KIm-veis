@@ -19,7 +19,7 @@ const validateName = async (
   });
 
   if (category) {
-    throw new AppError("Category not found", 404);
+    throw new AppError("Category already exists", 409);
   }
 
   return next();
