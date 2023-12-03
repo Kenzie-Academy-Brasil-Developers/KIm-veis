@@ -10,6 +10,7 @@ const createService = async (data: TUserSchemaReq): Promise<TUserSchemaRes> => {
 
   const user: User = userRepository.create(data);
   await userRepository.save(user);
+
   const returnData: TUserSchemaRes = userSchemaRes.parse(user);
 
   return returnData;

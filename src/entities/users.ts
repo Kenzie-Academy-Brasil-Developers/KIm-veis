@@ -28,13 +28,13 @@ class User {
   @Column({ type: "varchar", length: 120 })
   password: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: "date" })
   createdAt: Date | string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: "date" })
   updatedAt: Date | string;
 
-  @DeleteDateColumn({ nullable: true })
+  @DeleteDateColumn({ type: "date", nullable: true })
   deletedAt?: Date | string | null | undefined;
 
   @OneToMany(() => Schedule, (schedule) => schedule.user)

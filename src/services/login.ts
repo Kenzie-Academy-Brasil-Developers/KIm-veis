@@ -30,6 +30,7 @@ const loginService = async (data: TLoginSchema): Promise<IToken> => {
     {
       name: user.name,
       admin: user.admin,
+      email: user.email,
     },
     process.env.SECRET_KEY!,
     {

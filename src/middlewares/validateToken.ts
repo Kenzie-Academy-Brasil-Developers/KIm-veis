@@ -15,6 +15,7 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
     if (error) throw new AppError(error.message, 401);
 
     res.locals.userName = decoded.name;
+    res.locals.userEmail = decoded.email;
     res.locals.userAdmin = decoded.admin;
 
     return next();

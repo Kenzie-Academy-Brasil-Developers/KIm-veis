@@ -4,6 +4,7 @@ import createService from "../services/users/create";
 import readAllService from "../services/users/readAll";
 import updateService from "../services/users/update";
 import deleteService from "../services/users/delete";
+import { userPartial, userSchemaPart } from "../schemas/users";
 
 const createUser = async (req: Request, res: Response): Promise<Response> => {
   const returnData = await createService(req.body);
@@ -19,13 +20,8 @@ const readAllUser = async (req: Request, res: Response): Promise<Response> => {
 
 const updateUser = async (req: Request, res: Response): Promise<Response> => {
   const id: number = parseInt(req.params.id);
-  const data: TUserSchemaPart = req.body;
-  const returnData = await updateService(
-    res.locals.userName,
-    res.locals.userAdmin,
-    id,
-    data
-  );
+
+  const returnData = await updateService(res.locals, id, req.body);
 
   return res.status(200).json(returnData);
 };

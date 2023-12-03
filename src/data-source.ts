@@ -16,17 +16,26 @@ const settings = (): DataSourceOptions => {
     };
   }
 
-  const dbUrl: string | undefined = process.env.DATABASE_URL;
+  // POSTGRES CONFIG
+  // const dbUrl: string | undefined = process.env.DATABASE_URL;
 
-  if (!dbUrl) throw new Error("Missing env var: 'DATABASE_URL'");
+  // if (!dbUrl) throw new Error("Missing env var: 'DATABASE_URL'");
 
+  // return {
+  //   type: "postgres",
+  //   url: dbUrl,
+  //   synchronize: false,
+  //   logging: true,
+  //   entities: [entitiesPath],
+  //   migrations: [migrationPath],
+  // };
+
+  // SQLITE CONFIG
   return {
-    type: "postgres",
-    url: dbUrl,
-    synchronize: false,
-    logging: true,
+    type: "sqlite",
+    database: "./src/database.sqlite",
+    synchronize: true,
     entities: [entitiesPath],
-    migrations: [migrationPath],
   };
 };
 
